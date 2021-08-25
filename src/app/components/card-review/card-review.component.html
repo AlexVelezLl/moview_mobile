@@ -1,0 +1,21 @@
+<ion-card class="ion-no-margin card ion-margin-end ion-margin-top">
+  <div class="ion-margin">
+    <div class="flex">
+      <ion-avatar slot="start" class="avatar-size">
+        <img class="avatar-size" [src]="review.image_user" />
+      </ion-avatar>
+      <div class="ion-margin-start v-margin">
+        <h3 class="larger ion-no-margin bold">{{ review.name_user }}</h3>
+        <div class="score-div">
+          <ion-icon name="star" id="icon-score"></ion-icon>
+          <ion-label> {{ review.score }} </ion-label>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="ion-text-wrap">
+        {{ review.comment }}
+      </p>
+    </div>
+  </div>
+</ion-card>

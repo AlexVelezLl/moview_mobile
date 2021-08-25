@@ -1,0 +1,45 @@
+<!--ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button> </ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="movie">{{movie.name}} - {{movie.year}}</ion-title>
+  </ion-toolbar>
+</ion-header-->
+
+<ion-content *ngIf="movie">
+  <ion-back-button> </ion-back-button>
+  <h2 class="ion-margin-start bold">{{movie.name}} - {{movie.year}}</h2>
+  <ion-img [src]="movie.image_banner" width="100%"></ion-img>
+  <div class="ion-margin">
+    <ion-chip *ngFor="let categ of movie.categories">
+      <ion-label class="bold">{{categ}}</ion-label>
+    </ion-chip>
+  </div>
+  <div class="ion-margin">
+    <h3 class="bold">Sinopsis</h3>
+    <p class="light ion-text-justify ion-margin-end">{{movie.sinopsis}}</p>
+  </div>
+  <div class="ion-margin">
+    <h3 class="bold">Plataformas disponibles</h3>
+    <ion-thumbnail
+      *ngFor="let p of movie.platforms"
+      class="logo"
+      [routerLink]="p.link"
+    >
+      <img [src]="p.logo" />
+    </ion-thumbnail>
+  </div>
+  <div class="ion-margin">
+    <ion-item class="ion-no-margin ion-no-padding" lines="none">
+      <h3 class="bold">Reseñas</h3>
+      <ion-button color="tertiary" id="review-btn" slot="end" size="default"
+        >Escribir una reseña</ion-button
+      >
+    </ion-item>
+    <app-card-review
+      *ngFor="let rev of reviews"
+      [review]="rev"
+    ></app-card-review>
+  </div>
+</ion-content>
