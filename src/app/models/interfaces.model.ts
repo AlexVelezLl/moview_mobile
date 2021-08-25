@@ -1,4 +1,5 @@
 export interface Movie {
+  id: number;
   name: string;
   producer: string;
   avg_score: number;
@@ -20,4 +21,10 @@ export interface Review {
   name_movie: string;
   id_movie: number;
   comment: string;
+}
+
+export interface Category {
+  id: number;
+  name: string;
+  icon: string;
 }

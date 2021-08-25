@@ -1,0 +1,27 @@
+ion-chip {
+  img {
+    height: 18px;
+    margin-right: 7px;
+  }
+  ion-icon {
+    color: white;
+  }
+}
+
+.categories-container {
+  overflow-x: scroll;
+
+  .categories {
+    width: max-content;
+    .chip-pressed {
+      background-color: var(--ion-color-primary);
+    }
+    ion-chip {
+      --background: var(--ion-color-secondary);
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

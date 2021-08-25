@@ -8,7 +8,10 @@ import { Review } from 'src/app/models/interfaces.model';
 })
 export class CardReviewComponent implements OnInit {
   @Input() review: Review;
-  constructor() {}
+
+  constructor() {
+    console.log(this.review);
+  }
 
   ngOnInit() {}
 }
