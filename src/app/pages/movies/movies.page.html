@@ -1,9 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Movies</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content class="ion-padding">
+  <div class="header">
+    <h2>Películas y Series</h2>
+  </div>
+  <div *ngIf="!loading">
+    <div class="categories-container">
+      <div class="categories">
+        <ion-chip
+          [class.chip-pressed]="selectedCategoryId===-1"
+          (click)="selectCategory(-1)"
+        >
+          <ion-icon name="apps"></ion-icon>
+          <ion-label>Todas</ion-label>
+        </ion-chip>
+        <ion-chip
+          *ngFor="let category of categories"
+          [class.chip-pressed]="selectedCategoryId===category.id"
+          (click)="selectCategory(category.id)"
+        >
+          <img [src]="category.icon" alt="categ-icon" />
+          <ion-label>{{category.name}}</ion-label>
+        </ion-chip>
+      </div>
+    </div>
+    <div class="producers-container">
+      <div class="producer" *ngFor="let producer of producers">
+        <h3>{{producer.name}}</h3>
+        <div class="movies-container">
+          <div class="movie" *ngFor="let movie of producer.movies">
+            {{movie.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

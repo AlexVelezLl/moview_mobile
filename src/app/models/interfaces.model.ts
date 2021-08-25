@@ -1,4 +1,5 @@
 export interface Movie {
+  id: number;
   name: string;
   producer: string;
   avg_score: number;
@@ -10,4 +11,10 @@ export interface Movie {
   duration: number;
   platforms: Array<{ id: number; link: string }>;
   categories: Array<any>;
+}
+
+export interface Category {
+  id: number;
+  name: string;
+  icon: string;
 }
