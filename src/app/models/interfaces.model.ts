@@ -14,11 +14,12 @@ export interface Movie {
 }
 
 export interface Review {
-  name_user: string;
-  image_user: string;
+  id_user: number;
+  name_user?: string;
+  image_user?: string;
   score: number;
-  date: string;
-  name_movie: string;
+  date?: string;
+  name_movie?: string;
   id_movie: number;
   comment: string;
 }

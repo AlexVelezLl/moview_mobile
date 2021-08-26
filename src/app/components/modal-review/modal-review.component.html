@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="title">
+    <h3 class="ion-no-margin">{{ movie.name }} - {{ movie.year }}</h3>
+  </div>
+  <div class="rating">
+    <h6>Puntaje:</h6>
+    <div class="rating-input">
+      <ion-icon
+        *ngFor="let i of maxStars"
+        name="star"
+        [ngStyle]="{ color: i <= score ? 'yellow' : 'white' }"
+        (click)="setScore(i)"
+      ></ion-icon>
+      {{ score || "-" }} / {{ maxStars.length }}
+    </div>
+  </div>
+  <div class="comment">
+    <h6>Comentario:</h6>
+    <ion-textarea rows="4" [(ngModel)]="comment"></ion-textarea>
+  </div>
+  <div class="send">
+    <ion-button color="tertiary" size="default" (click)="sendReview()"
+      >Enviar</ion-button
+    >
+  </div>
+</div>
