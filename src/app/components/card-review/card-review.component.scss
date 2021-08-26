@@ -1,0 +1,42 @@
+.card {
+  --background: var(--ion-color-secondary);
+}
+
+.item-color {
+  --background: inherit;
+}
+
+#icon-score {
+  color: #ffff00;
+  font-size: larger;
+}
+
+.avatar-size {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 60px !important;
+  max-height: 60px !important;
+}
+
+.larger {
+  font-size: large;
+}
+
+.flex {
+  display: flex;
+}
+.v-margin {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.score-div {
+  align-items: center;
+  margin-top: 4px;
+}
+.bold {
+  font-weight: bold;
+}
+.movie-name-chip {
+  margin-left: auto;
+  --background: var(--ion-color-primary);
+}

@@ -9,12 +9,33 @@ export interface Movie {
   image_banner: string;
   type: string;
   duration: number;
-  platforms: Array<{ id: number; link: string }>;
+  platforms: Array<{ logo: string; link: string }>;
   categories: Array<any>;
+}
+
+export interface Review {
+  name_user: string;
+  image_user: string;
+  score: number;
+  date: string;
+  name_movie: string;
+  id_movie: number;
+  comment: string;
 }
 
 export interface Category {
   id: number;
   name: string;
   icon: string;
+}
+
+export interface User {
+  username: string;
+  name: string;
+  image: string;
+}
+
+export interface Watchlist {
+  id: string;
+  image_cover: string;
 }

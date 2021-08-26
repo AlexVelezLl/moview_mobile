@@ -6,8 +6,15 @@ import { MoviesPage } from './movies.page';
 const routes: Routes = [
   {
     path: '',
-    component: MoviesPage
-  }
+    component: MoviesPage,
+  },
+  {
+    path: 'information/:id',
+    loadChildren: () =>
+      import('./specific-movie/specific-movie.module').then(
+        (m) => m.SpecificMoviePageModule
+      ),
+  },
 ];
 
 @NgModule({
