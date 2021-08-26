@@ -8,6 +8,10 @@ ion-chip {
   }
 }
 
+.header h2 {
+  font-size: 30px;
+}
+
 .categories-container {
   overflow-x: scroll;
 
@@ -24,4 +28,21 @@ ion-chip {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.movies-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  app-movie {
+    margin-right: 40px;
+  }
+}
+
+.producers-container {
+  margin-left: 10px;
+}
+
+.producer {
+  margin-bottom: 20px;
 }

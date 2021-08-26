@@ -1,0 +1,28 @@
+.image img {
+  width: 120px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.container {
+  width: 120px;
+}
+
+.name {
+  font-weight: 400;
+  font-size: 17px;
+  width: 120px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.extra-info {
+  font-weight: 400;
+  font-size: 13px;
+  color: #9597a3;
+  ion-icon {
+    color: yellow;
+  }
+}

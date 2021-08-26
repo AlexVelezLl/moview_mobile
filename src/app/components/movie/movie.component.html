@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="image">
+    <img [src]="movie.image_cover" alt="" />
+  </div>
+  <div class="info">
+    <div class="name">
+      {{ movie.name }}
+    </div>
+    <div class="extra-info">
+      <div>{{ movie.year }} - {{ duration }}</div>
+      <div><ion-icon name="star"></ion-icon> {{ movie.avg_score || "-" }}</div>
+    </div>
+  </div>
+</div>

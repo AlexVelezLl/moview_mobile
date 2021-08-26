@@ -1,4 +1,4 @@
-<ion-content class="ion-padding">
+<ion-content class="ion-padding-top ion-padding-start">
   <div class="header">
     <h2>Películas y Series</h2>
   </div>
@@ -26,9 +26,8 @@
       <div class="producer" *ngFor="let producer of producers">
         <h3>{{producer.name}}</h3>
         <div class="movies-container">
-          <div class="movie" *ngFor="let movie of producer.movies">
-            {{movie.name}}
-          </div>
+          <app-movie *ngFor="let movie of producer.movies" [movie]="movie">
+          </app-movie>
         </div>
       </div>
     </div>
