@@ -31,6 +31,10 @@ export class ModalReviewComponent implements OnInit {
 
   async sendReview() {
     this.sending = true;
+    if (!this.validateReview()) {
+      this.sending = false;
+      return;
+    }
     this.alertService.presentLoading('Enviando...');
     const review: Review = {
       id_user: 2,
@@ -53,6 +57,16 @@ export class ModalReviewComponent implements OnInit {
     this.sending = false;
   }
 
+  private validateReview() {
+    if (this.score === 0) {
+      this.alertService.presentToast('Debes calificar la película.');
+      return false;
+    } else if (this.comment.length === 0) {
+      this.alertService.presentToast('Debes escribir un comentario.');
+      return false;
+    }
+    return true;
+  }
   setScore(score: number) {
     this.score = score;
   }
