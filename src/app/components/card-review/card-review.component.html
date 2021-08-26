@@ -2,9 +2,7 @@
   <ion-spinner name="crescent" color="primary"></ion-spinner>
 </ion-row>
 <ng-template #loadedContent>
-  <ion-card
-    class="ion-no-margin card ion-margin-end ion-margin-start ion-margin-top"
-  >
+  <ion-card class="ion-margin card">
     <div class="ion-margin">
       <div class="flex">
         <ion-avatar slot="start" class="avatar-size">
@@ -17,6 +15,9 @@
             <ion-label> {{ review.score }} </ion-label>
           </div>
         </div>
+        <ion-chip class="movie-name-chip" *ngIf="review.name_movie">
+          <ion-label>{{ review.name_movie }}</ion-label>
+        </ion-chip>
       </div>
       <div>
         <p class="ion-text-wrap">

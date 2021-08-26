@@ -25,7 +25,6 @@ export class ProfilePage implements OnInit {
     this.user = await this.userService.getUserById(1);
     this.watchlist = await this.whatchlistService.getWatchlistOfUser(1);
     this.reviews = await this.movieService.getUserReviews(1);
-    console.log(this.watchlist);
 
     this.loading = false;
   }

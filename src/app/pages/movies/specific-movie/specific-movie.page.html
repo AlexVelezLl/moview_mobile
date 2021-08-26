@@ -1,21 +1,16 @@
-<!--ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button> </ion-back-button>
-    </ion-buttons>
-    <ion-title *ngIf="movie">{{movie.name}} - {{movie.year}}</ion-title>
-  </ion-toolbar>
-</ion-header-->
 <ion-row class="ion-justify-content-center" *ngIf="loading">
   <ion-spinner name="crescent" color="primary"></ion-spinner>
 </ion-row>
 <ion-content *ngIf="!loading">
   <div>
-    <h2 class="ion-margin-start bold">{{movie.name}} - {{movie.year}}</h2>
+    <h2 class="bold">{{movie.name}} - {{movie.year}}</h2>
     <ion-img [src]="movie.image_banner" width="100%"></ion-img>
     <div class="ion-margin">
-      <ion-chip *ngFor="let categ of movie.categories">
-        <ion-label class="bold">{{categ}}</ion-label>
+      <ion-chip
+        *ngFor="let categ of movie.categories"
+        class="category-name-chip"
+      >
+        <ion-label>{{categ}}</ion-label>
       </ion-chip>
     </div>
     <div class="ion-margin">
@@ -32,8 +27,11 @@
         <img [src]="p.logo" />
       </ion-thumbnail>
     </div>
-    <div class="ion-margin">
-      <ion-item class="ion-no-margin ion-no-padding" lines="none">
+    <div class="">
+      <ion-item
+        class="ion-no-margin ion-no-padding ion-margin-start"
+        lines="none"
+      >
         <h3 class="bold">Reseñas</h3>
         <ion-button color="tertiary" id="review-btn" slot="end" size="default"
           >Escribir una reseña</ion-button
