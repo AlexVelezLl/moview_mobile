@@ -21,7 +21,10 @@
     <h2 class="ion-margin-start bold">Contenido por ver</h2>
     <div class="movie-container">
       <div class="movies">
-        <div *ngFor="let movie of watchlist">
+        <div
+          *ngFor="let movie of watchlist"
+          [routerLink]="'../movie/information/'+movie.id"
+        >
           <img class="movie-image" [src]="movie.image_cover" />
         </div>
       </div>
@@ -29,5 +32,9 @@
   </div>
   <div>
     <h2 class="ion-margin-start bold">Ultimas reseñas</h2>
+    <app-card-review
+      *ngFor="let rev of reviews"
+      [review]="rev"
+    ></app-card-review>
   </div>
 </ion-content>

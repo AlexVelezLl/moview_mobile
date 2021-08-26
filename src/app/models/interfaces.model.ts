@@ -36,6 +36,6 @@ export interface User {
 }
 
 export interface Watchlist {
-  id_movie: string;
+  id: string;
   image_cover: string;
 }

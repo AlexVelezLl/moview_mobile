@@ -24,4 +24,8 @@ export class MovieService {
     let url_reviews = environment.api + '/review/movie/' + id;
     return this.http.get<Review[]>(url_reviews).toPromise();
   }
+  getUserReviews(id): Promise<Review[]> {
+    let url_reviews = environment.api + '/review/user/' + id;
+    return this.http.get<Review[]>(url_reviews).toPromise();
+  }
 }
