@@ -28,3 +28,14 @@ export interface Category {
   name: string;
   icon: string;
 }
+
+export interface User {
+  username: string;
+  name: string;
+  image: string;
+}
+
+export interface Watchlist {
+  id_movie: string;
+  image_cover: string;
+}

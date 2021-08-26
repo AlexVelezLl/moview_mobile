@@ -1,9 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-row class="ion-justify-content-center" *ngIf="loading">
+  <ion-spinner name="crescent" color="primary"></ion-spinner>
+</ion-row>
+<ion-content *ngIf="!loading">
+  <h2 class="ion-margin-start bold">Mi perfil</h2>
+  <ion-row
+    class="ion-justify-content-center ion-margin-top ion-align-items-end"
+  >
+    <ion-col size="6">
+      <div id="profile">
+        <ion-avatar slot="start" class="avatar-size" style="margin: auto">
+          <img class="avatar-size" [src]="user.image" />
+        </ion-avatar>
+        <h3 id="name">{{user.name}}</h3>
 
-<ion-content>
-
+        <h5 id="username" class="ion-margin-start">@{{user.username}}</h5>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div>
+    <h2 class="ion-margin-start bold">Contenido por ver</h2>
+    <div class="movie-container">
+      <div class="movies">
+        <div *ngFor="let movie of watchlist">
+          <img class="movie-image" [src]="movie.image_cover" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2 class="ion-margin-start bold">Ultimas reseñas</h2>
+  </div>
 </ion-content>

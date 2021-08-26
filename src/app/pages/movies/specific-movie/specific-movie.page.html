@@ -10,7 +10,7 @@
   <ion-spinner name="crescent" color="primary"></ion-spinner>
 </ion-row>
 <ion-content *ngIf="!loading">
-  <div *ngIf="movie">
+  <div>
     <h2 class="ion-margin-start bold">{{movie.name}} - {{movie.year}}</h2>
     <ion-img [src]="movie.image_banner" width="100%"></ion-img>
     <div class="ion-margin">
