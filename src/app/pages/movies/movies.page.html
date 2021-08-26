@@ -2,6 +2,9 @@
   <div class="header">
     <h2>Películas y Series</h2>
   </div>
+  <ion-row class="ion-justify-content-center" *ngIf="loading">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+  </ion-row>
   <div *ngIf="!loading">
     <div class="categories-container">
       <div class="categories">
@@ -26,7 +29,11 @@
       <div class="producer" *ngFor="let producer of producers">
         <h3>{{producer.name}}</h3>
         <div class="movies-container">
-          <app-movie *ngFor="let movie of producer.movies" [movie]="movie">
+          <app-movie
+            *ngFor="let movie of producer.movies"
+            [movie]="movie"
+            [routerLink]="['information',movie.id]"
+          >
           </app-movie>
         </div>
       </div>

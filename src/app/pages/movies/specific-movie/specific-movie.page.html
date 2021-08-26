@@ -22,7 +22,7 @@
       <ion-thumbnail
         *ngFor="let p of movie.platforms"
         class="logo"
-        [routerLink]="p.link"
+        (click)="openMovie(p.link)"
       >
         <img [src]="p.logo" />
       </ion-thumbnail>

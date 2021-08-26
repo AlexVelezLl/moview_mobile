@@ -25,4 +25,7 @@ export class SpecificMoviePage implements OnInit {
     console.log(this.reviews);
     this.loading = false;
   }
+  openMovie(link){
+    window.open(link)
+  }
 }
