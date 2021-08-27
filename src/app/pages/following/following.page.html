@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Following</ion-title>
+    <ion-title>Reseñas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <app-card-review
+    *ngFor="let review of reviews"
+    [review]="review"
+  ></app-card-review>
 </ion-content>
