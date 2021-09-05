@@ -7,7 +7,5 @@ import { MovieService } from './services/movie/movie.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private movieService: MovieService) {
-    this.movieService.getMovies();
-  }
+  constructor() {}
 }
