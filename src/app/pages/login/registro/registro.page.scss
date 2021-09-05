@@ -19,6 +19,16 @@
 
   background: #ff9c41;
 }
+#circle3 {
+  border-radius: 50%;
+  position: absolute;
+  width: 459px;
+  height: 398px;
+  left: 154px;
+  top: 579px;
+
+  background: #141927;
+}
 
 #circle4:hover {
   // Move the circle 200px right (X) & 200px down (Y)
@@ -45,4 +55,23 @@
   font-weight: 500;
   font-size: 46px;
   line-height: 63px;
+}
+.content {
+  position: relative;
+  top: 50%;
+  width: 100%;
+}
+.form-item {
+  border-radius: 10px;
+}
+
+.bg-color {
+  --background: #e1e1e1;
+}
+.register {
+  border-bottom-style: solid;
+  border-bottom-color: #4870ff;
+  border-bottom-width: 5px;
+  line-height: 6px;
+  color: black;
 }
