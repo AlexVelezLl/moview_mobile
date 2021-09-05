@@ -29,6 +29,7 @@ export class UserService {
 
   async logout() {
     await this.storage.remove(this.TOKEN_KEY);
+    await this.http.post(environment.api + '/logout', {}).toPromise();
     this.router.navigate(['/login'], { replaceUrl: true });
   }
 }
