@@ -22,9 +22,10 @@ export class ProfilePage implements OnInit {
 
   async ngOnInit() {
     this.loading = true;
-    this.user = await this.userService.getUserById(1);
-    this.watchlist = await this.whatchlistService.getWatchlistOfUser(1);
-    this.reviews = await this.movieService.getUserReviews(1);
+    const id_user = await this.userService.getUserId();
+    this.user = await this.userService.getUserById(id_user);
+    this.watchlist = await this.whatchlistService.getWatchlistOfUser();
+    this.reviews = await this.movieService.getUserReviews(id_user);
 
     this.loading = false;
   }

@@ -11,6 +11,7 @@ import { StorageService } from '../storage/storage.service';
 export class UserService {
   private url = environment.api + '/user';
   private TOKEN_KEY = 'session_token';
+  private ID_USER = 'id_user';
 
   constructor(
     private http: HttpClient,
@@ -25,6 +26,10 @@ export class UserService {
 
   getSessionToken() {
     return this.storage.get(this.TOKEN_KEY);
+  }
+
+  getUserId() {
+    return this.storage.get(this.ID_USER);
   }
 
   async logout() {

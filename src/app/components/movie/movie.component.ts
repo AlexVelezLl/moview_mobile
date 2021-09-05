@@ -18,7 +18,6 @@ export class MovieComponent implements OnInit {
       this.duration = `${hours}h ${minutes}m`;
     } else {
       this.duration = `${this.movie.duration} eps`;
-      console.log(this.duration);
     }
   }
 }

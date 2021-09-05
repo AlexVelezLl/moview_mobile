@@ -10,8 +10,8 @@ export class WatchlistService {
   private url = environment.api + '/watchlist';
   constructor(private http: HttpClient) {}
 
-  getWatchlistOfUser(id): Promise<Watchlist[]> {
-    const url_watchlist_user = this.url + '/user/' + id;
+  getWatchlistOfUser(): Promise<Watchlist[]> {
+    const url_watchlist_user = this.url + '/user';
     return this.http.get<Watchlist[]>(url_watchlist_user).toPromise();
   }
 }

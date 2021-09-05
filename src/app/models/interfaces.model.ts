@@ -14,7 +14,7 @@ export interface Movie {
 }
 
 export interface Review {
-  id_user: number;
+  id_user?: number;
   name_user?: string;
   image_user?: string;
   score: number;

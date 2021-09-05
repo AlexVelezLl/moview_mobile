@@ -37,7 +37,6 @@ export class ModalReviewComponent implements OnInit {
     }
     this.alertService.presentLoading('Enviando...');
     const review: Review = {
-      id_user: 2,
       id_movie: this.movie.id,
       score: this.score,
       comment: this.comment,
