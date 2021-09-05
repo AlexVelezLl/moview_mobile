@@ -1,12 +1,23 @@
-#circle4 {
+#circle1 {
   border-radius: 50%;
   position: absolute;
-  width: 459px;
-  height: 398px;
-  left: 154px;
-  top: 579px;
+  width: 700px;
+  height: 700px;
+  left: -332px;
+  top: -414px;
+  background: #4c525c;
+  z-index: 1;
+}
 
-  background: #e8eaee;
+#circle2 {
+  border-radius: 50%;
+  position: absolute;
+  width: 398px;
+  height: 398px;
+  right: -184px;
+  top: -183px;
+
+  background: #ff9c41;
 }
 
 #circle4:hover {
@@ -22,4 +33,16 @@
   //border: 10px solid red;
   background: #e8eaee;
   transition: all 2s;
+}
+
+#text-create {
+  position: absolute;
+  width: 208px;
+  height: 126px;
+  left: 36px;
+  top: 50px;
+  z-index: 100;
+  font-weight: 500;
+  font-size: 46px;
+  line-height: 63px;
 }
