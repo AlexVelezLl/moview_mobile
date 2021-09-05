@@ -1,0 +1,25 @@
+#circle4 {
+  border-radius: 50%;
+  position: absolute;
+  width: 459px;
+  height: 398px;
+  left: 154px;
+  top: 579px;
+
+  background: #e8eaee;
+}
+
+#circle4:hover {
+  // Move the circle 200px right (X) & 200px down (Y)
+  // Double its size and rotate it 180 degrees.
+  width: 926px;
+  height: 1078px;
+  left: -313px;
+  top: -101px;
+  // * For performance reasons, limit the animations to the
+  // transform and opacity properties.
+  //background-color: pink;
+  //border: 10px solid red;
+  background: #e8eaee;
+  transition: all 2s;
+}
