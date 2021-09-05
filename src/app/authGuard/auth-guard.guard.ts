@@ -17,7 +17,7 @@ export class AuthGuardGuard implements CanActivate {
     if (await this.userService.getSessionToken()) {
       return true;
     }
-    this.router.navigateByUrl('/', { replaceUrl: true });
+    this.router.navigateByUrl('/login', { replaceUrl: true });
     return false;
   }
 }
