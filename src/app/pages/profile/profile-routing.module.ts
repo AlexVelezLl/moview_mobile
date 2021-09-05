@@ -7,12 +7,16 @@ import { ProfilePage } from './profile.page';
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
-  }
+    component: ProfilePage,
+  },
+  {
+    path: ':id',
+    component: ProfilePage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule,ComponentsModule],
+  exports: [RouterModule, ComponentsModule],
 })
 export class ProfilePageRoutingModule {}

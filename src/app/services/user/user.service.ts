@@ -37,4 +37,20 @@ export class UserService {
     await this.http.post(environment.api + '/logout', {}).toPromise();
     this.router.navigate(['/login'], { replaceUrl: true });
   }
+
+  async isFollowingUser(id: number): Promise<boolean> {
+    const url_user = this.url + '/following/' + id;
+    const response = await this.http.get<any>(url_user).toPromise();
+    return response.following;
+  }
+
+  followUser(id: number) {
+    const url = this.url + '/follow/' + id;
+    return this.http.post(url, {}).toPromise();
+  }
+
+  unfollowUser(id: number) {
+    const url = this.url + '/unfollow/' + id;
+    return this.http.post(url, {}).toPromise();
+  }
 }

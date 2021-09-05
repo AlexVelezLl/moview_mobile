@@ -41,3 +41,15 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.seguir {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  ion-button {
+    --border-radius: 20px;
+    --padding-start: 36px;
+    --padding-end: 36px;
+    max-height: 38px;
+  }
+}
