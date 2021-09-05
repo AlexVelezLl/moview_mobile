@@ -1,0 +1,40 @@
+<ion-content>
+  <div id="circle"></div>
+  <div id="circle2"></div>
+  <div class="content">
+    <ion-row class="ion-justify-content-center">
+      <div id="logo">
+        <ion-img src="assets/icon/moviewLOGO.png" width="100%"></ion-img>
+      </div>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-margin-horizontal">
+      <form action="" id="form">
+        <ion-item color="secondary" class="form-item">
+          <ion-label position="fixed">Correo</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-vertical form-item" color="secondary">
+          <ion-label position="fixed">Contraseña</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <div
+          class="ion-margin-vertical"
+          style="display: flex; align-items: center; justify-content: flex-end"
+        >
+          <ion-label class="ion-margin-horizontal" style="font-size: large"
+            >Iniciar sesión</ion-label
+          >
+          <ion-fab-button mode="ios">
+            <ion-icon name="arrow-forward-outline"></ion-icon
+          ></ion-fab-button>
+        </div>
+        <ion-row class="ion-justify-content-center">
+          <div style="display: inline-block; text-align: center">
+            <div class="ion-margin-vertical">o</div>
+            <div class="register" routerLink="./registro">Registrarse</div>
+          </div>
+        </ion-row>
+      </form>
+    </ion-row>
+  </div>
+</ion-content>
