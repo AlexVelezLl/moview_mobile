@@ -35,10 +35,10 @@ export class UserService {
   }
 
   async logout(force = false) {
-    await this.storage.remove(this.TOKEN_KEY);
-    if (force) {
+    if (!force) {
       await this.http.post(environment.api + '/logout', {}).toPromise();
     }
+    await this.storage.remove(this.TOKEN_KEY);
     this.watchlistService.dropWatchlist();
     this.router.navigate(['/'], { replaceUrl: true });
   }
