@@ -1,13 +1,5 @@
 <ion-content class="bg-color">
-  <div id="circle1">
-    <!--ion-button
-      color="primary"
-      style="position: absolute; top: 50px; left: 100px"
-      routerLink=".."
-      (click)="tologin=!tologin"
-      >Primary</ion-button
-    -->
-  </div>
+  <div id="circle1"></div>
   <div id="text-create">Crear una cuenta</div>
   <div id="circle2"></div>
   <div class="content">
@@ -25,13 +17,8 @@
           <ion-label position="fixed">Contraseña</ion-label>
           <ion-input></ion-input>
         </ion-item>
-        <div
-          class="ion-margin-vertical"
-          style="display: flex; align-items: center; justify-content: flex-end"
-        >
-          <ion-label
-            class="ion-margin-horizontal"
-            style="font-size: large; color: black"
+        <div class="ion-margin-vertical to-center">
+          <ion-label class="ion-margin-horizontal" id="text-register"
             >Registrarse</ion-label
           >
           <ion-fab-button mode="ios">
@@ -40,8 +27,8 @@
         </div>
       </form>
     </ion-row>
-    <div id="circle3">
-      <div class="register" routerLink="..">Iniciar sesión</div>
-    </div>
+  </div>
+  <div id="circle3">
+    <div class="login" routerLink="..">Iniciar sesión</div>
   </div>
 </ion-content>
