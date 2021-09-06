@@ -5,7 +5,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -28,11 +28,6 @@ const routes: Routes = [
           import('../pages/profile/profile.module').then(
             (m) => m.ProfilePageModule
           ),
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/movie',
-        pathMatch: 'full',
       },
     ],
     canActivate: [AuthGuardGuard],
