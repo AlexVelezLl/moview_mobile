@@ -6,7 +6,11 @@
         (click)="watchlistEventHandler($event)"
         [disabled]="addingToWatchlist"
       >
-        <ion-icon [name]="movie.isInWatchlist ? 'remove' : 'add'"></ion-icon>
+        <ion-spinner name="lines" *ngIf="addingToWatchlist"></ion-spinner>
+        <ion-icon
+          *ngIf="!addingToWatchlist"
+          [name]="movie.isInWatchlist ? 'remove' : 'add'"
+        ></ion-icon>
       </ion-button>
     </div>
   </div>
