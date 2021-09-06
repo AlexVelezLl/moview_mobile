@@ -25,6 +25,7 @@
 .flex {
   display: flex;
 }
+
 .v-margin {
   margin-top: 7px;
   margin-bottom: 7px;
@@ -33,10 +34,23 @@
   align-items: center;
   margin-top: 4px;
 }
+
 .bold {
   font-weight: bold;
 }
+
+.info-container {
+  max-width: 35%;
+}
+
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .movie-name-chip {
   margin-left: auto;
+  max-width: 35%;
   --background: var(--ion-color-primary);
 }

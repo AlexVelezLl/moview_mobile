@@ -12,9 +12,9 @@
         >
           <img class="avatar-size" [src]="review.image_user" />
         </ion-avatar>
-        <div class="ion-margin-start v-margin">
+        <div class="ion-margin-start v-margin info-container">
           <h3
-            class="larger ion-no-margin bold"
+            class="larger ion-no-margin bold overflow-ellipsis"
             [routerLink]="['/tabs', 'profile', review.id_user]"
           >
             {{ review.name_user }}
@@ -25,7 +25,9 @@
           </div>
         </div>
         <ion-chip class="movie-name-chip" *ngIf="review.name_movie">
-          <ion-label>{{ review.name_movie }}</ion-label>
+          <ion-label class="overflow-ellipsis">{{
+            review.name_movie
+          }}</ion-label>
         </ion-chip>
       </div>
       <div>
