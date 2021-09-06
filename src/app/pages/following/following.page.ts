@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Review } from 'src/app/models/interfaces.model';
+import { FollowingObserverService } from 'src/app/observer/following-observer.service';
 import { MovieService } from 'src/app/services/movie/movie.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-following',
@@ -9,15 +12,32 @@ import { MovieService } from 'src/app/services/movie/movie.service';
 })
 export class FollowingPage implements OnInit {
   reviews: Review[];
-  constructor(private movieService: MovieService) {}
+  loading = true;
+  followingSubscription: Subscription;
+
+  constructor(
+    private movieService: MovieService,
+    private followingObserver: FollowingObserverService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.getReviews();
+    this.followingSubscription = this.followingObserver
+      .getObservable()
+      .subscribe(() => {
+        this.getReviews();
+      });
   }
 
   async getReviews() {
-    const id = 2;
+    this.loading = true;
+    const id = await this.userService.getUserId();
     this.reviews = await this.movieService.getUserFollowingReviews(id);
-    console.log(this.reviews);
+    this.loading = false;
+  }
+
+  ngOnDestroy() {
+    this.followingSubscription.unsubscribe();
   }
 }

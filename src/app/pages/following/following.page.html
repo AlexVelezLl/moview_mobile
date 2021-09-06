@@ -5,8 +5,13 @@
 </ion-header>
 
 <ion-content>
-  <app-card-review
-    *ngFor="let review of reviews"
-    [review]="review"
-  ></app-card-review>
+  <ion-row class="ion-justify-content-center" *ngIf="loading; else content">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+  </ion-row>
+  <ng-template #content>
+    <app-card-review
+      *ngFor="let review of reviews"
+      [review]="review"
+    ></app-card-review>
+  </ng-template>
 </ion-content>

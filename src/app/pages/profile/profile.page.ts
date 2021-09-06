@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Review, User, Watchlist } from 'src/app/models/interfaces.model';
+import { FollowingObserverService } from 'src/app/observer/following-observer.service';
+import { ReviewObserverService } from 'src/app/observer/review-observer.service';
 import { MovieService } from 'src/app/services/movie/movie.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { WatchlistService } from 'src/app/services/watchlist/watchlist.service';
@@ -19,16 +22,24 @@ export class ProfilePage implements OnInit {
   isFollowingUser: boolean;
   loadingFollowButton = false;
   idUser: any;
+  reviewSubscription: Subscription;
 
   constructor(
     private userService: UserService,
     private whatchlistService: WatchlistService,
     private movieService: MovieService,
-    private activatedRout: ActivatedRoute
+    private activatedRout: ActivatedRoute,
+    private followingObserver: FollowingObserverService,
+    private reviewObserver: ReviewObserverService
   ) {}
 
   async ngOnInit() {
     await this.getData();
+    this.reviewSubscription = this.reviewObserver
+      .getObservable()
+      .subscribe(async () => {
+        this.reviews = await this.movieService.getUserReviews(this.idUser);
+      });
   }
 
   async getData() {
@@ -57,8 +68,13 @@ export class ProfilePage implements OnInit {
       await this.userService.unfollowUser(this.idUser);
     } else {
       await this.userService.followUser(this.idUser);
+      this.followingObserver.publish();
     }
     this.isFollowingUser = !this.isFollowingUser;
     this.loadingFollowButton = false;
+  }
+
+  ngOnDestroy() {
+    this.reviewSubscription.unsubscribe();
   }
 }
