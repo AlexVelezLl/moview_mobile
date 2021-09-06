@@ -34,11 +34,13 @@ export class UserService {
     return this.storage.get(this.ID_USER);
   }
 
-  async logout() {
+  async logout(force = false) {
     await this.storage.remove(this.TOKEN_KEY);
-    await this.http.post(environment.api + '/logout', {}).toPromise();
+    if (force) {
+      await this.http.post(environment.api + '/logout', {}).toPromise();
+    }
     this.watchlistService.dropWatchlist();
-    this.router.navigate(['/login'], { replaceUrl: true });
+    this.router.navigate(['/'], { replaceUrl: true });
   }
 
   async isFollowingUser(id: number): Promise<boolean> {

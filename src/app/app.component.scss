@@ -1,0 +1,12 @@
+ion-item {
+  ion-label {
+    margin-left: 5px;
+  }
+  padding-bottom: 5px;
+  padding-top: 5px;
+  color: #71747c;
+}
+
+.active {
+  --ion-item-background: var(--ion-color-secondary);
+}
