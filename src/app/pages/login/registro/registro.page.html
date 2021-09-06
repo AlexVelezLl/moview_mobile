@@ -6,16 +6,32 @@
     <ion-row class="ion-justify-content-center ion-margin-horizontal">
       <form [formGroup]="registerForm" id="form">
         <ion-item color="medium" class="form-item">
-          <ion-label position="fixed">Nombre</ion-label>
-          <ion-input formControlName="name" type="text"></ion-input>
+          <ion-input
+            formControlName="name"
+            type="text"
+            placeholder="Nombre"
+          ></ion-input>
         </ion-item>
         <ion-item color="medium" class="form-item ion-margin-vertical">
-          <ion-label position="fixed">Usuario</ion-label>
-          <ion-input formControlName="user" type="text"></ion-input>
+          <ion-input
+            formControlName="user"
+            type="text"
+            placeholder="Usuario"
+          ></ion-input>
         </ion-item>
         <ion-item class="ion-margin-vertical form-item" color="medium">
-          <ion-label position="fixed">Contraseña</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
+          <ion-input
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-vertical form-item" color="medium">
+          <ion-input
+            formControlName="passwordConfirmation"
+            type="password"
+            placeholder="Confirmar contraseña"
+          ></ion-input>
         </ion-item>
         <div class="ion-margin-vertical to-center">
           <ion-label class="ion-margin-horizontal" id="text-register"

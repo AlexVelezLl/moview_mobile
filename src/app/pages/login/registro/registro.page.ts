@@ -26,6 +26,7 @@ export class RegistroPage implements OnInit {
       name: new FormControl('', [Validators.required]),
       user: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
+      passwordConfirmation: new FormControl('', [Validators.required]),
     });
   }
 
@@ -39,6 +40,11 @@ export class RegistroPage implements OnInit {
     const name = this._registerForm.get('name').value;
     const userform = this._registerForm.get('user').value;
     const password = this._registerForm.get('password').value;
+    const password2 = this._registerForm.get('passwordConfirmation').value;
+    if (password != password2) {
+      await this.alertService.presentToast('Las contraseñas no coinciden');
+      return;
+    }
     await this.alertService.presentLoading('Registrando usuario...');
     try {
       const { user, token } = await this.sistema.register(
