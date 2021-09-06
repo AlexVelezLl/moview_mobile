@@ -30,7 +30,7 @@ export class TokenInterceptorService implements HttpInterceptor {
             () => {},
             async (err: any) => {
               if (err.status === 401) {
-                await this.userService.logout();
+                await this.userService.logout(true);
               }
             }
           )

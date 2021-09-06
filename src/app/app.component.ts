@@ -11,11 +11,13 @@ import { StorageService } from './services/storage/storage.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  selectedTab = 'movie';
   constructor(
     private platform: Platform,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private userService: UserService
   ) {
     this.initializeApp();
   }
@@ -27,5 +29,9 @@ export class AppComponent {
         this.splashScreen.hide();
       }
     });
+  }
+
+  logout(){
+    this.userService.logout();
   }
 }
