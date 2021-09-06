@@ -19,10 +19,10 @@ export class SystemService {
     await this.store.set('session_token', token);
   }
 
-  register(username, password) {
+  register(name, username, password) {
     const url_register = this.url + 'register';
     return this.http
-      .post<any>(url_register, { username, password })
+      .post<any>(url_register, { name, username, password })
       .toPromise();
   }
 }

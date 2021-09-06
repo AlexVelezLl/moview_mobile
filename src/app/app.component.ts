@@ -26,11 +26,6 @@ export class AppComponent {
         this.statusBar.backgroundColorByHexString('#0F1321');
         this.splashScreen.hide();
       }
-      this.storageService.set('id_user', 2);
-      this.storageService.set(
-        'session_token',
-        '8|StRmx5YmSlZCFa1e1CVcNtwxkN2B2c5Veit50ggv'
-      );
     });
   }
 }
