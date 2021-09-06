@@ -45,6 +45,11 @@ export class SpecificMoviePage implements OnInit {
     this.reviews = await this.movieService.getMovieReviews(this.movie.id);
   }
 
+  async refresh(event) {
+    await this.getReviews();
+    event.target.complete();
+  }
+
   openMovie(link: string) {
     window.open(link);
   }

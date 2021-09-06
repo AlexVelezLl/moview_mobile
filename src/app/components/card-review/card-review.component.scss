@@ -31,8 +31,17 @@
   margin-bottom: 7px;
 }
 .score-div {
+  display: flex;
   align-items: center;
   margin-top: 4px;
+  span {
+    margin-left: 10px;
+    padding-top: 2px;
+  }
+  ion-label {
+    margin-left: 3px;
+    padding-top: 2px;
+  }
 }
 
 .bold {
