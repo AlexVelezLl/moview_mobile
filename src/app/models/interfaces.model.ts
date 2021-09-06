@@ -11,10 +11,11 @@ export interface Movie {
   duration: number;
   platforms: Array<{ logo: string; link: string }>;
   categories: Array<any>;
+  isInWatchlist?: boolean;
 }
 
 export interface Review {
-  id_user: number;
+  id_user?: number;
   name_user?: string;
   image_user?: string;
   score: number;
@@ -37,6 +38,6 @@ export interface User {
 }
 
 export interface Watchlist {
-  id: string;
+  id: number;
   image_cover: string;
 }

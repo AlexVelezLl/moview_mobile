@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from '../authGuard/auth-guard.guard';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
         pathMatch: 'full',
       },
     ],
+    canActivate: [AuthGuardGuard],
   },
   {
     path: '',

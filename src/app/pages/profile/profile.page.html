@@ -2,7 +2,7 @@
   <ion-spinner name="crescent" color="primary"></ion-spinner>
 </ion-row>
 <ion-content *ngIf="!loading">
-  <h2 class="ion-margin-start bold">Mi perfil</h2>
+  <h2 class="ion-margin-start bold">Perfil</h2>
   <ion-row
     class="ion-justify-content-center ion-margin-top ion-align-items-end"
   >
@@ -14,10 +14,19 @@
         <h3 id="name">{{user.name}}</h3>
 
         <h5 id="username">@{{user.username}}</h5>
+        <div class="seguir" *ngIf="!myProfile">
+          <ion-button
+            [color]="isFollowingUser? 'medium' : 'tertiary'"
+            size="default"
+            [disabled]="loadingFollowButton"
+            (click)="follow()"
+            >{{isFollowingUser? 'Siguiendo' : 'Seguir'}}</ion-button
+          >
+        </div>
       </div>
     </ion-col>
   </ion-row>
-  <div>
+  <div *ngIf="myProfile">
     <h2 class="ion-margin-start bold">Contenido por ver</h2>
     <div class="movie-container">
       <div class="movies">
@@ -26,12 +35,19 @@
           [routerLink]="'../movie/information/'+movie.id"
         >
           <img class="movie-image" [src]="movie.image_cover" />
+          <div class="add-watchlist">
+            <ion-button
+              (click)="removeFromWatchlist($event, movie.id)"
+            >
+              <ion-icon name='remove'></ion-icon>
+            </ion-button>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div>
-    <h2 class="ion-margin-start bold">Ultimas reseñas</h2>
+    <h2 class="ion-margin-start bold">Últimas reseñas</h2>
     <app-card-review
       *ngFor="let rev of reviews"
       [review]="rev"

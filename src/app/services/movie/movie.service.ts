@@ -31,7 +31,7 @@ export class MovieService {
   }
 
   getUserFollowingReviews(id: number): Promise<Review[]> {
-    const url_reviews = environment.api + '/review/following/' + id;
+    const url_reviews = environment.api + '/review/following';
     return this.http.get<Review[]>(url_reviews).toPromise();
   }
 

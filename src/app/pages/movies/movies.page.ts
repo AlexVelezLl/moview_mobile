@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Category, Movie } from 'src/app/models/interfaces.model';
+import { WatchlistObserverService } from 'src/app/observer/watchlist-observer.service';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { MovieService } from 'src/app/services/movie/movie.service';
+import { WatchlistService } from 'src/app/services/watchlist/watchlist.service';
 
 @Component({
   selector: 'app-movies',
@@ -14,18 +17,35 @@ export class MoviesPage implements OnInit {
   loading = true;
   selectedCategoryId = -1;
   private movies: Movie[];
+  private removeFromWatchlistSubscription: Subscription;
+
   constructor(
     private movieService: MovieService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private watchlistService: WatchlistService,
+    private watchlistObserver: WatchlistObserverService
   ) {}
 
   async ngOnInit() {
     await this.getData();
     this.loading = false;
+    this.removeFromWatchlistSubscription = this.watchlistObserver
+      .getRemoveObservable()
+      .subscribe((idMovie) => {
+        this.movies.forEach((movie) => {
+          if (movie.id == idMovie) {
+            movie.isInWatchlist = false;
+          }
+        });
+      });
   }
 
   private async getData() {
     this.movies = await this.movieService.getMovies();
+    const watchlist = await this.watchlistService.getWatchlistOfUser();
+    this.movies.forEach((movie) => {
+      movie.isInWatchlist = watchlist.some((wl) => wl.id == movie.id);
+    });
     this.filterProducers(this.movies);
     this.categories = await this.categoryService.getCategories();
   }
@@ -57,5 +77,9 @@ export class MoviesPage implements OnInit {
         });
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.removeFromWatchlistSubscription.unsubscribe();
   }
 }

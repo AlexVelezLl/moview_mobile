@@ -5,18 +5,29 @@
   <ion-card class="ion-margin card">
     <div class="ion-margin">
       <div class="flex">
-        <ion-avatar slot="start" class="avatar-size">
+        <ion-avatar
+          slot="start"
+          class="avatar-size"
+          [routerLink]="['/tabs', 'profile', review.id_user]"
+        >
           <img class="avatar-size" [src]="review.image_user" />
         </ion-avatar>
-        <div class="ion-margin-start v-margin">
-          <h3 class="larger ion-no-margin bold">{{ review.name_user }}</h3>
+        <div class="ion-margin-start v-margin info-container">
+          <h3
+            class="larger ion-no-margin bold overflow-ellipsis"
+            [routerLink]="['/tabs', 'profile', review.id_user]"
+          >
+            {{ review.name_user }}
+          </h3>
           <div class="score-div">
             <ion-icon name="star" id="icon-score"></ion-icon>
             <ion-label> {{ review.score }} </ion-label>
           </div>
         </div>
         <ion-chip class="movie-name-chip" *ngIf="review.name_movie">
-          <ion-label>{{ review.name_movie }}</ion-label>
+          <ion-label class="overflow-ellipsis">{{
+            review.name_movie
+          }}</ion-label>
         </ion-chip>
       </div>
       <div>

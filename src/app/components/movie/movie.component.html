@@ -1,6 +1,14 @@
 <div class="container">
   <div class="image">
     <img [src]="movie.image_cover" alt="" />
+    <div class="add-watchlist">
+      <ion-button
+        (click)="watchlistEventHandler($event)"
+        [disabled]="addingToWatchlist"
+      >
+        <ion-icon [name]="movie.isInWatchlist ? 'remove' : 'add'"></ion-icon>
+      </ion-button>
+    </div>
   </div>
   <div class="info">
     <div class="name">
