@@ -37,6 +37,12 @@ export class FollowingPage implements OnInit {
     this.loading = false;
   }
 
+  async refresh(event) {
+    const id = await this.userService.getUserId();
+    this.reviews = await this.movieService.getUserFollowingReviews(id);
+    event.target.complete();
+  }
+
   ngOnDestroy() {
     this.followingSubscription?.unsubscribe();
   }

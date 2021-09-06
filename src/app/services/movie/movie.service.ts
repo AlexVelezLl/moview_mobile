@@ -11,8 +11,9 @@ export class MovieService {
 
   private url = environment.api + '/movie';
 
-  getMovies(): Promise<Movie[]> {
-    return this.http.get<Movie[]>(this.url).toPromise();
+  async getMovies(): Promise<Movie[]> {
+    const movies = await this.http.get<Movie[]>(this.url).toPromise();
+    return movies.sort((a, b) => b.year - a.year);
   }
 
   getMovieById(id: number): Promise<Movie> {

@@ -77,6 +77,9 @@ export class MoviesPage implements OnInit {
         });
       }
     });
+    this.producers = this.producers.sort(
+      (a, b) => b.movies.length - a.movies.length
+    );
   }
 
   ngOnDestroy() {
