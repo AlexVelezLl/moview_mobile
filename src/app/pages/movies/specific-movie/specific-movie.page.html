@@ -1,9 +1,18 @@
-<ion-row class="ion-justify-content-center" *ngIf="loading">
-  <ion-spinner name="crescent" color="primary"></ion-spinner>
-</ion-row>
-<ion-content *ngIf="!loading">
-  <div>
-    <h2 class="bold">{{movie.name}} - {{movie.year}}</h2>
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="loading">Película</ion-title>
+    <ion-title *ngIf="!loading">{{movie.name}} - {{movie.year}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-justify-content-center" *ngIf="loading; else content">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+  </ion-row>
+  <ng-template #content>
     <ion-img [src]="movie.image_banner" width="100%"></ion-img>
     <div class="ion-margin">
       <ion-chip
@@ -33,7 +42,12 @@
         lines="none"
       >
         <h3 class="bold">Reseñas</h3>
-        <ion-button color="tertiary" id="review-btn" slot="end" size="default" (click)="writeReview()"
+        <ion-button
+          color="tertiary"
+          id="review-btn"
+          slot="end"
+          size="default"
+          (click)="writeReview()"
           >Escribir una reseña</ion-button
         >
       </ion-item>
@@ -42,5 +56,5 @@
         [review]="rev"
       ></app-card-review>
     </div>
-  </div>
+  </ng-template>
 </ion-content>

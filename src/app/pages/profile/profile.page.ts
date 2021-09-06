@@ -19,7 +19,8 @@ export class ProfilePage implements OnInit {
   user: User;
   watchlist: Watchlist[];
   reviews: Review[];
-  myProfile: boolean;
+  isProfileRoute: boolean;
+  myUserRoute: boolean;
   isFollowingUser: boolean;
   loadingFollowButton = false;
   idUser: any;
@@ -44,7 +45,7 @@ export class ProfilePage implements OnInit {
       .subscribe(async () => {
         this.reviews = await this.movieService.getUserReviews(this.idUser);
       });
-    if (this.myProfile) {
+    if (this.isProfileRoute) {
       this.watchlistAddSubscription = this.watchlistObserver
         .getAddObservable()
         .subscribe(async () => {
@@ -57,8 +58,11 @@ export class ProfilePage implements OnInit {
     this.loading = true;
     this.idUser = this.activatedRout.snapshot.paramMap.get('id');
     const myIdUser = await this.userService.getUserId();
-    if (!this.idUser || +this.idUser === myIdUser) {
-      this.myProfile = true;
+    if (!this.idUser) {
+      this.isProfileRoute = true;
+      this.idUser = myIdUser;
+    } else if (this.idUser == myIdUser) {
+      this.myUserRoute = true;
       this.idUser = myIdUser;
     } else {
       this.idUser = +this.idUser;
@@ -92,7 +96,7 @@ export class ProfilePage implements OnInit {
 
   ngOnDestroy() {
     this.reviewSubscription.unsubscribe();
-    if (this.myProfile) {
+    if (this.isProfileRoute) {
       this.watchlistAddSubscription.unsubscribe();
     }
   }

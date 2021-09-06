@@ -1,7 +1,12 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Películas y Series</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="ion-padding-top ion-padding-start">
-  <div class="header">
-    <h2>Películas y Series</h2>
-  </div>
   <ion-row class="ion-justify-content-center" *ngIf="loading">
     <ion-spinner name="crescent" color="primary"></ion-spinner>
   </ion-row>

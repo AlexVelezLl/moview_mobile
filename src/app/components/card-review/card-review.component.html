@@ -8,14 +8,17 @@
         <ion-avatar
           slot="start"
           class="avatar-size"
-          [routerLink]="['/tabs', 'profile', review.id_user]"
+          [routerLink]="['user', review.id_user]"
         >
           <img class="avatar-size" [src]="review.image_user" />
         </ion-avatar>
-        <div class="ion-margin-start v-margin info-container">
+        <div
+          class="ion-margin-start v-margin"
+          [ngClass]="review.name_movie ? 'max-width-35' : 'max-width-70'"
+        >
           <h3
             class="larger ion-no-margin bold overflow-ellipsis"
-            [routerLink]="['/tabs', 'profile', review.id_user]"
+            [routerLink]="['user', review.id_user]"
           >
             {{ review.name_user }}
           </h3>
@@ -24,7 +27,11 @@
             <ion-label> {{ review.score }} </ion-label>
           </div>
         </div>
-        <ion-chip class="movie-name-chip" *ngIf="review.name_movie">
+        <ion-chip
+          class="movie-name-chip"
+          *ngIf="review.name_movie"
+          [routerLink]="['movie', 'information', review.id_movie]"
+        >
           <ion-label class="overflow-ellipsis">{{
             review.name_movie
           }}</ion-label>
