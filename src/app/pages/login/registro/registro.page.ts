@@ -30,21 +30,33 @@ export class RegistroPage implements OnInit {
   }
 
   async register() {
+    if (this._registerForm.invalid) {
+      await this.alertService.presentToast(
+        'Por favor completar todos los campos'
+      );
+      return;
+    }
     const name = this._registerForm.get('name').value;
-    const user = this._registerForm.get('user').value;
+    const userform = this._registerForm.get('user').value;
     const password = this._registerForm.get('password').value;
     await this.alertService.presentLoading('Registrando usuario...');
     try {
-      await this.sistema.register(name, user, password);
+      const { user, token } = await this.sistema.register(
+        name,
+        userform,
+        password
+      );
+      await this.sistema.afterRegister(user, token);
+
       //this.router.navigateByUrl('/tabs', { replaceUrl: true });
     } catch (error) {
+      console.log(error);
+
       await this.alertService.presentToast('Error al crear usuario');
     }
     this.alertService.dismissLoading();
-    await this.alertService.presentToast(
-      'Usuario creado por favor iniciar sesión'
-    );
-    this.router.navigate(['/'], { replaceUrl: true });
+    this.alertService.presentToast('Usuario creado con éxito');
+    this.router.navigateByUrl('tabs/movie', { replaceUrl: true });
   }
 
   public get registerForm() {

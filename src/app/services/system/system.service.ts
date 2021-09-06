@@ -25,4 +25,9 @@ export class SystemService {
       .post<any>(url_register, { name, username, password })
       .toPromise();
   }
+
+  async afterRegister(user, token) {
+    await this.store.set('id_user', user.id);
+    await this.store.set('session_token', token);
+  }
 }
