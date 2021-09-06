@@ -2,7 +2,7 @@
   <ion-menu side="start" contentId="main" #menu>
     <ion-content class="ion-padding-top">
       <ion-grid class="ion-no-padding">
-        <ion-row class="ion-justify-content-center">
+        <ion-row class="ion-justify-content-center logo">
           <img
             src="/assets/icon/logo.svg"
             alt=""
@@ -11,22 +11,41 @@
           />
         </ion-row>
         <ion-list lines="none">
-          <ion-item class="active">
+          <ion-item
+            [ngClass]="currentUrl?.startsWith('/tabs/movie') ? 'active' : ''"
+            routerLink="/tabs/movie"
+            (click)="toggleMenu()"
+          >
             <ion-icon src="/assets/icon/movie.svg"></ion-icon>
             <ion-label>Películas</ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item
+            [ngClass]="
+              currentUrl?.startsWith('/tabs/following') ? 'active' : ''
+            "
+            routerLink="/tabs/following"
+            (click)="toggleMenu()"
+          >
             <ion-icon src="/assets/icon/review.svg"></ion-icon>
             <ion-label>Siguiendo</ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item
+            [ngClass]="currentUrl?.startsWith('/tabs/profile') ? 'active' : ''"
+            routerLink="/tabs/profile"
+            (click)="toggleMenu()"
+          >
             <ion-icon src="/assets/icon/user.svg"></ion-icon>
             <ion-label>Perfil</ion-label>
           </ion-item>
         </ion-list>
         <ion-row class="ion-justify-content-center ion-margin-top">
-          <ion-button id="logout-button" color="tertiary" expand="block" (click)="logout()">
-            >Cerrar sesión</ion-button
+          <ion-button
+            id="logout-button"
+            color="tertiary"
+            expand="block"
+            (click)="logout()"
+          >
+            Cerrar sesión</ion-button
           >
         </ion-row>
       </ion-grid>
