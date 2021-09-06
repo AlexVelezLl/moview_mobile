@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonMenu, Platform } from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { UserService } from './services/user/user.service';
 import { StorageService } from './services/storage/storage.service';
-import { ActivatedRoute } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  selectedTab = 'movie';
+  currentUrl: string;
+  @ViewChild('menu') ionMenu: IonMenu;
+
   constructor(
     private platform: Platform,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private storageService: StorageService,
     private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -31,12 +34,19 @@ export class AppComponent {
         this.splashScreen.hide();
       }
     });
-    this.activatedRoute.url.subscribe((url) => {
-      console.log(url);
-    });
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentUrl = event.url;
+      });
   }
 
-  logout() {
-    this.userService.logout();
+  async logout() {
+    await this.userService.logout();
+    this.toggleMenu();
+  }
+
+  toggleMenu() {
+    this.ionMenu.close(true);
   }
 }
