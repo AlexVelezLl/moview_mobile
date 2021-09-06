@@ -1,12 +1,37 @@
-.image img {
-  width: 120px;
-  height: 190px;
-  object-fit: cover;
-  border-radius: 10px;
+.image {
+  position: relative;
+  img {
+    width: 120px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
 }
 
 .container {
   width: 120px;
+}
+
+.add-watchlist {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  ion-button {
+    font-size: 13px;
+    --border-radius: 50%;
+    --padding-start: 2px;
+    --padding-end: 2px;
+    --padding-top: 2px;
+    --padding-bottom: 2px;
+    --background: #444c67;
+    --opacity: 0.8;
+    max-height: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    min-width: 30px;
+    margin: 0;
+  }
 }
 
 .name {

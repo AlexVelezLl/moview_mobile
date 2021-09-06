@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Review, User, Watchlist } from 'src/app/models/interfaces.model';
 import { FollowingObserverService } from 'src/app/observer/following-observer.service';
 import { ReviewObserverService } from 'src/app/observer/review-observer.service';
+import { WatchlistObserverService } from 'src/app/observer/watchlist-observer.service';
 import { MovieService } from 'src/app/services/movie/movie.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { WatchlistService } from 'src/app/services/watchlist/watchlist.service';
@@ -22,7 +23,8 @@ export class ProfilePage implements OnInit {
   isFollowingUser: boolean;
   loadingFollowButton = false;
   idUser: any;
-  reviewSubscription: Subscription;
+  private reviewSubscription: Subscription;
+  private watchlistAddSubscription: Subscription;
 
   constructor(
     private userService: UserService,
@@ -30,7 +32,9 @@ export class ProfilePage implements OnInit {
     private movieService: MovieService,
     private activatedRout: ActivatedRoute,
     private followingObserver: FollowingObserverService,
-    private reviewObserver: ReviewObserverService
+    private reviewObserver: ReviewObserverService,
+    private watchlistService: WatchlistService,
+    private watchlistObserver: WatchlistObserverService
   ) {}
 
   async ngOnInit() {
@@ -40,6 +44,13 @@ export class ProfilePage implements OnInit {
       .subscribe(async () => {
         this.reviews = await this.movieService.getUserReviews(this.idUser);
       });
+    if (this.myProfile) {
+      this.watchlistAddSubscription = this.watchlistObserver
+        .getAddObservable()
+        .subscribe(async () => {
+          this.watchlist = await this.whatchlistService.getWatchlistOfUser();
+        });
+    }
   }
 
   async getData() {
@@ -56,7 +67,6 @@ export class ProfilePage implements OnInit {
       );
     }
     this.user = await this.userService.getUserById(this.idUser);
-
     this.watchlist = await this.whatchlistService.getWatchlistOfUser();
     this.reviews = await this.movieService.getUserReviews(this.idUser);
     this.loading = false;
@@ -74,7 +84,16 @@ export class ProfilePage implements OnInit {
     this.loadingFollowButton = false;
   }
 
+  removeFromWatchlist(event, idMovie) {
+    event.stopPropagation();
+    this.watchlistService.removeFromWatchlist(idMovie);
+    this.watchlist = this.watchlist.filter((movie) => movie.id !== idMovie);
+  }
+
   ngOnDestroy() {
     this.reviewSubscription.unsubscribe();
+    if (this.myProfile) {
+      this.watchlistAddSubscription.unsubscribe();
+    }
   }
 }

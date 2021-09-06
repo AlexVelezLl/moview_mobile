@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/interfaces.model';
 import { environment } from 'src/environments/environment';
 import { StorageService } from '../storage/storage.service';
+import { WatchlistService } from '../watchlist/watchlist.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,8 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private storage: StorageService,
-    private router: Router
+    private router: Router,
+    private watchlistService: WatchlistService
   ) {}
 
   getUserById(id: number): Promise<User> {
@@ -35,6 +37,7 @@ export class UserService {
   async logout() {
     await this.storage.remove(this.TOKEN_KEY);
     await this.http.post(environment.api + '/logout', {}).toPromise();
+    this.watchlistService.dropWatchlist();
     this.router.navigate(['/login'], { replaceUrl: true });
   }
 

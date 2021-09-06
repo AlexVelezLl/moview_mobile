@@ -35,6 +35,13 @@
           [routerLink]="'../movie/information/'+movie.id"
         >
           <img class="movie-image" [src]="movie.image_cover" />
+          <div class="add-watchlist">
+            <ion-button
+              (click)="removeFromWatchlist($event, movie.id)"
+            >
+              <ion-icon name='remove'></ion-icon>
+            </ion-button>
+          </div>
         </div>
       </div>
     </div>
