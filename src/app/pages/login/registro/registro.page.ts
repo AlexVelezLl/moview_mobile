@@ -41,6 +41,10 @@ export class RegistroPage implements OnInit {
       await this.alertService.presentToast('Error al crear usuario');
     }
     this.alertService.dismissLoading();
+    await this.alertService.presentToast(
+      'Usuario creado por favor iniciar sesión'
+    );
+    this.router.navigate(['/'], { replaceUrl: true });
   }
 
   public get registerForm() {

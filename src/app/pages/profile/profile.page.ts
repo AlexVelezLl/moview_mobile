@@ -95,9 +95,9 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.reviewSubscription.unsubscribe();
+    this.reviewSubscription?.unsubscribe();
     if (this.isProfileRoute) {
-      this.watchlistAddSubscription.unsubscribe();
+      this.watchlistAddSubscription?.unsubscribe();
     }
   }
 }

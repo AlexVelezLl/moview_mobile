@@ -38,6 +38,6 @@ export class FollowingPage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.followingSubscription.unsubscribe();
+    this.followingSubscription?.unsubscribe();
   }
 }

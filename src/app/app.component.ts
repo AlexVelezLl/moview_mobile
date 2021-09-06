@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { UserService } from './services/user/user.service';
 import { StorageService } from './services/storage/storage.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private storageService: StorageService,
-    private userService: UserService
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) {
     this.initializeApp();
   }
@@ -29,9 +31,12 @@ export class AppComponent {
         this.splashScreen.hide();
       }
     });
+    this.activatedRoute.url.subscribe((url) => {
+      console.log(url);
+    });
   }
 
-  logout(){
+  logout() {
     this.userService.logout();
   }
 }

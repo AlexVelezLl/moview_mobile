@@ -27,8 +27,6 @@ export class MoviesPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    console.log('lelelele');
-
     await this.getData();
     this.loading = false;
     this.removeFromWatchlistSubscription = this.watchlistObserver
@@ -82,6 +80,6 @@ export class MoviesPage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.removeFromWatchlistSubscription.unsubscribe();
+    this.removeFromWatchlistSubscription?.unsubscribe();
   }
 }

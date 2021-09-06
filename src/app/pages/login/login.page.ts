@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
     await this.alertService.presentLoading('Iniciando sesión...');
     try {
       await this.sistema.login(user, password);
-      this.router.navigateByUrl('/tabs', { replaceUrl: true });
+      this.router.navigateByUrl('tabs/movie', { replaceUrl: true });
     } catch (error) {
       await this.alertService.presentToast('Usuario o contraseña incorrectas');
     }
