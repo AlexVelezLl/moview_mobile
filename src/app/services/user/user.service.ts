@@ -13,7 +13,7 @@ export class UserService {
   private url = environment.api + '/user';
   private TOKEN_KEY = 'session_token';
   private ID_USER = 'id_user';
-
+  private DEVICE_TOKEN_KEY = 'device_token';
   constructor(
     private http: HttpClient,
     private storage: StorageService,
@@ -28,6 +28,14 @@ export class UserService {
 
   getSessionToken() {
     return this.storage.get(this.TOKEN_KEY);
+  }
+
+  getDeviceToken() {
+    return this.storage.get(this.DEVICE_TOKEN_KEY);
+  }
+
+  setDeviceToken(token: string) {
+    return this.storage.set(this.DEVICE_TOKEN_KEY, token);
   }
 
   getUserId() {

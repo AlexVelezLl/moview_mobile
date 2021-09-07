@@ -26,7 +26,7 @@ export class ProfilePage implements OnInit {
   idUser: any;
   private reviewSubscription: Subscription;
   private watchlistAddSubscription: Subscription;
-
+  private watchlistRemSubscription: Subscription;
   constructor(
     private userService: UserService,
     private whatchlistService: WatchlistService,
@@ -50,6 +50,13 @@ export class ProfilePage implements OnInit {
         .getAddObservable()
         .subscribe(async () => {
           this.watchlist = await this.whatchlistService.getWatchlistOfUser();
+        });
+      this.watchlistRemSubscription = this.watchlistObserver
+        .getRemoveObservable()
+        .subscribe((idMovie) => {
+          this.watchlist = this.watchlist.filter(
+            (movie) => movie.id !== idMovie
+          );
         });
     }
   }

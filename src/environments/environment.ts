@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   api: 'https://moview-api.herokuapp.com/api',
+  version: 'web',
 };
 
 /*

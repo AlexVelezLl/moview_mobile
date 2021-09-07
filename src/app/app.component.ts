@@ -7,6 +7,15 @@ import { StorageService } from './services/storage/storage.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { SystemService } from './services/system/system.service';
+import { environment } from 'src/environments/environment';
+import { AlertService } from './services/alert/alert.service';
+
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token,
+} from '@capacitor/push-notifications';
 
 @Component({
   selector: 'app-root',
@@ -21,19 +30,20 @@ export class AppComponent {
     private platform: Platform,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private storageService: StorageService,
     private userService: UserService,
     private router: Router,
-    private sistema: SystemService
+    private sistema: SystemService,
+    private alertService: AlertService
   ) {
     this.initializeApp();
   }
 
   async initializeApp() {
     this.platform.ready().then(() => {
-      if (this.platform.is('capacitor')) {
+      if (environment.version != 'web') {
         this.statusBar.backgroundColorByHexString('#0F1321');
         this.splashScreen.hide();
+        this.settingUpNotifications();
       }
     });
     this.router.events
@@ -54,5 +64,23 @@ export class AppComponent {
 
   toggleMenu() {
     this.ionMenu.close(true);
+  }
+
+  private settingUpNotifications() {
+    PushNotifications.requestPermissions().then((result) => {
+      if (result.receive === 'granted') {
+        PushNotifications.register();
+      }
+    });
+    PushNotifications.addListener('registration', (token: Token) => {
+      this.userService.setDeviceToken(token.value);
+    });
+
+    PushNotifications.addListener(
+      'pushNotificationReceived',
+      (notification: PushNotificationSchema) => {
+        this.alertService.presentToast(notification.body);
+      }
+    );
   }
 }
