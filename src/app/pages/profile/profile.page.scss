@@ -25,6 +25,7 @@
 
 .movie-container {
   overflow-x: scroll;
+  margin-left: 16px;
   .movies {
     display: flex;
     width: max-content;
@@ -36,6 +37,28 @@
       border-radius: 10px;
       object-fit: cover;
     }
+  }
+}
+
+.show-movies {
+  background-color: var(--ion-color-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px 10px;
+  .icon {
+    background-color: var(--ion-color-primary);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .see-catalog {
+    font-size: 13px;
+    font-weight: bold;
   }
 }
 
