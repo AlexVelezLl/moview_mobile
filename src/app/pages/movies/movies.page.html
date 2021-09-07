@@ -7,10 +7,21 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding-top ion-padding-start">
-  <ion-row class="ion-justify-content-center" *ngIf="loading">
-    <ion-spinner name="crescent" color="primary"></ion-spinner>
-  </ion-row>
-  <div *ngIf="!loading">
+  <div *ngIf="loading">
+    <div style="display: flex">
+      <ion-skeleton-text animated class="esk-chip"></ion-skeleton-text>
+      <ion-skeleton-text animated class="esk-chip"></ion-skeleton-text>
+      <ion-skeleton-text animated class="esk-chip"></ion-skeleton-text>
+      <ion-skeleton-text animated class="esk-chip"></ion-skeleton-text>
+    </div>
+    <app-eskeleton-category></app-eskeleton-category>
+    <app-eskeleton-category></app-eskeleton-category>
+    <app-eskeleton-category></app-eskeleton-category>
+  </div>
+  <div
+    *ngIf="!loading
+  "
+  >
     <div class="categories-container">
       <div class="categories">
         <ion-chip

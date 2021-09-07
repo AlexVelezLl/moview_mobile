@@ -43,6 +43,7 @@ export class SpecificMoviePage implements OnInit {
 
   async getReviews() {
     this.reviews = await this.movieService.getMovieReviews(this.movie.id);
+    console.log(this.reviews);
   }
 
   async refresh(event) {

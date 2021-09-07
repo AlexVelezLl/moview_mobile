@@ -29,8 +29,11 @@
               size="default"
               [disabled]="loadingFollowButton"
               (click)="follow()"
-              >{{isFollowingUser? 'Siguiendo' : 'Seguir'}}</ion-button
-            >
+              >{{isFollowingUser? 'Siguiendo' : 'Seguir'}}<ion-spinner
+                *ngIf="loadingFollowButton"
+                name="dots"
+              ></ion-spinner
+            ></ion-button>
           </div>
         </div>
       </ion-col>

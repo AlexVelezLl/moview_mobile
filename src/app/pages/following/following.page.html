@@ -11,9 +11,12 @@
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-row class="ion-justify-content-center" *ngIf="loading; else content">
-    <ion-spinner name="crescent" color="primary"></ion-spinner>
-  </ion-row>
+  <div *ngIf="loading; else content">
+    <app-eskeleton-review></app-eskeleton-review>
+    <app-eskeleton-review></app-eskeleton-review>
+    <app-eskeleton-review></app-eskeleton-review>
+    <app-eskeleton-review></app-eskeleton-review>
+  </div>
   <ng-template #content>
     <app-card-review
       *ngFor="let review of reviews"

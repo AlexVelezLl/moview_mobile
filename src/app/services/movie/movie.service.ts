@@ -28,6 +28,8 @@ export class MovieService {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
     this.formatReviewDate(reviewsSorted);
+    console.log(reviewsSorted);
+
     return reviewsSorted;
   }
 
