@@ -30,4 +30,7 @@ export class SystemService {
     await this.store.set('id_user', user.id);
     await this.store.set('session_token', token);
   }
+  public async userLoggedIn() {
+    return await this.store.get('id_user');
+  }
 }

@@ -26,9 +26,6 @@
   height: 206px;
 }
 
-.form-item {
-  border-radius: 10px;
-}
 .content {
   position: relative;
   top: 20%;
@@ -36,6 +33,10 @@
 }
 #form {
   width: 100%;
+  .form-item {
+    border-radius: 10px;
+    --highlight-color-valid: var(--ion-color-primary);
+  }
 }
 .register {
   border-bottom-style: solid;

@@ -1,0 +1,26 @@
+.container {
+  display: block;
+  text-align: center;
+  margin-right: 40px;
+}
+.movie-esk {
+  width: 120px;
+  height: 190px;
+  border-radius: 10px;
+}
+.title-esk {
+  height: 18px;
+  width: 120px;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+.score-div-esk {
+  display: flex;
+  align-items: center;
+}
+.score-esk {
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 80px;
+  border-radius: 5px;
+}

@@ -6,6 +6,7 @@ import { UserService } from './services/user/user.service';
 import { StorageService } from './services/storage/storage.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { SystemService } from './services/system/system.service';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +23,13 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private storageService: StorageService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private sistema: SystemService
   ) {
     this.initializeApp();
   }
 
-  initializeApp() {
+  async initializeApp() {
     this.platform.ready().then(() => {
       if (this.platform.is('capacitor')) {
         this.statusBar.backgroundColorByHexString('#0F1321');
@@ -39,6 +41,10 @@ export class AppComponent {
       .subscribe((event: NavigationEnd) => {
         this.currentUrl = event.url;
       });
+    let userLoggedIn = await this.sistema.userLoggedIn();
+    if (userLoggedIn) {
+      this.router.navigateByUrl('tabs/movie', { replaceUrl: true });
+    }
   }
 
   async logout() {
