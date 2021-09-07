@@ -41,6 +41,10 @@
         </ion-chip>
       </div>
     </div>
+    <app-empty-list
+      *ngIf="!producers.length"
+      message="No hay ninguna película de esta categoría aún."
+    ></app-empty-list>
     <div class="producers-container">
       <div class="producer" *ngFor="let producer of producers">
         <h3>{{producer.name}}</h3>

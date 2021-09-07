@@ -64,6 +64,10 @@
     </div>
     <div>
       <h2 class="ion-margin-start bold">Últimas reseñas</h2>
+      <app-empty-list
+        *ngIf="!reviews.length"
+        message="Aún no hay ninguna reseña de los usuarios a los que sigues."
+      ></app-empty-list>
       <app-card-review
         *ngFor="let rev of reviews"
         [review]="rev"

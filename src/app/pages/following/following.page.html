@@ -18,6 +18,10 @@
     <app-eskeleton-review></app-eskeleton-review>
   </div>
   <ng-template #content>
+    <app-empty-list
+      *ngIf="!reviews.length"
+      message="Aún no hay ninguna reseña de los usuarios a los que sigues."
+    ></app-empty-list>
     <app-card-review
       *ngFor="let review of reviews"
       [review]="review"

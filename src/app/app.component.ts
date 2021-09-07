@@ -41,7 +41,7 @@ export class AppComponent {
   async initializeApp() {
     this.platform.ready().then(() => {
       if (environment.version != 'web') {
-        this.statusBar.backgroundColorByHexString('#0F1321');
+        this.statusBar.backgroundColorByHexString('#141927');
         this.splashScreen.hide();
         this.settingUpNotifications();
       }
@@ -58,8 +58,10 @@ export class AppComponent {
   }
 
   async logout() {
+    await this.alertService.presentLoading('Cerrando sesión...');
     await this.userService.logout();
     this.toggleMenu();
+    this.alertService.dismissLoading();
   }
 
   toggleMenu() {

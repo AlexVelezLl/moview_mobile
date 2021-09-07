@@ -29,7 +29,7 @@
       <h3 class="bold">Sinopsis</h3>
       <p class="light ion-text-justify ion-margin-end">{{movie.sinopsis}}</p>
     </div>
-    <div class="ion-margin">
+    <div class="ion-margin" *ngIf="movie.platforms.length">
       <h3 class="bold">Plataformas disponibles</h3>
       <ion-thumbnail
         *ngFor="let p of movie.platforms"
@@ -39,7 +39,7 @@
         <img [src]="p.logo" />
       </ion-thumbnail>
     </div>
-    <div class="">
+    <div>
       <ion-item
         class="ion-no-margin ion-no-padding ion-margin-start"
         lines="none"
@@ -54,6 +54,10 @@
           >Escribir una reseña</ion-button
         >
       </ion-item>
+      <app-empty-list
+        *ngIf="!reviews.length"
+        message="No hay ninguna reseña de esta película aún."
+      ></app-empty-list>
       <app-card-review
         *ngFor="let rev of reviews"
         [review]="rev"
