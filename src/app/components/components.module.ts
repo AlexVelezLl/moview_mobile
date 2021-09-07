@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EskeletonMovieComponent } from './eskeleton-movie/eskeleton-movie.component';
 import { EskeletonCategoryComponent } from './eskeleton-category/eskeleton-category.component';
+import { EskeletonReviewComponent } from './eskeleton-review/eskeleton-review.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { EskeletonCategoryComponent } from './eskeleton-category/eskeleton-categ
     ModalReviewComponent,
     EskeletonMovieComponent,
     EskeletonCategoryComponent,
+    EskeletonReviewComponent,
   ],
   imports: [CommonModule, IonicModule, FormsModule, RouterModule],
   exports: [
@@ -24,6 +26,7 @@ import { EskeletonCategoryComponent } from './eskeleton-category/eskeleton-categ
     ModalReviewComponent,
     EskeletonMovieComponent,
     EskeletonCategoryComponent,
+    EskeletonReviewComponent,
   ],
 })
 export class ComponentsModule {}
