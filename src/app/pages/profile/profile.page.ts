@@ -82,8 +82,8 @@ export class ProfilePage implements OnInit {
       await this.userService.unfollowUser(this.idUser);
     } else {
       await this.userService.followUser(this.idUser);
-      this.followingObserver.publish();
     }
+    this.followingObserver.publish();
     this.isFollowingUser = !this.isFollowingUser;
     this.loadingFollowButton = false;
   }
