@@ -1,0 +1,19 @@
+.bold {
+  font-weight: bold;
+}
+.movie-container {
+  overflow-x: scroll;
+  margin-left: 16px;
+  .movies {
+    display: flex;
+    width: max-content;
+    .movie-image {
+      width: 100px;
+      height: 150px;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  }
+}

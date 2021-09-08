@@ -10,6 +10,8 @@ import { EskeletonMovieComponent } from './eskeleton-movie/eskeleton-movie.compo
 import { EskeletonCategoryComponent } from './eskeleton-category/eskeleton-category.component';
 import { EskeletonReviewComponent } from './eskeleton-review/eskeleton-review.component';
 import { EmptyListComponent } from './empty-list/empty-list.component';
+import { EskeletonProfileComponent } from './eskeleton-profile/eskeleton-profile.component';
+import { EskeletonWatchlistComponent } from './eskeleton-watchlist/eskeleton-watchlist.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { EmptyListComponent } from './empty-list/empty-list.component';
     EskeletonCategoryComponent,
     EskeletonReviewComponent,
     EmptyListComponent,
+    EskeletonProfileComponent,
+    EskeletonWatchlistComponent,
   ],
   imports: [CommonModule, IonicModule, FormsModule, RouterModule],
   exports: [
@@ -30,6 +34,8 @@ import { EmptyListComponent } from './empty-list/empty-list.component';
     EskeletonCategoryComponent,
     EskeletonReviewComponent,
     EmptyListComponent,
+    EskeletonProfileComponent,
+    EskeletonWatchlistComponent,
   ],
 })
 export class ComponentsModule {}

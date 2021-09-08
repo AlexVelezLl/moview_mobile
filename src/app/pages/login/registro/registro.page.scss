@@ -1,57 +1,60 @@
 #circle1 {
   border-radius: 50%;
   position: absolute;
-  width: 700px;
-  height: 700px;
-  left: -332px;
-  top: -414px;
+  width: 84vh;
+  height: 81vh;
+  left: -390px;
+  top: -390px;
   background: #4c525c;
   z-index: 1;
-  @media (max-height: 720px) {
-    height: 630px;
+  z-index: 1;
+  @media (max-height: 730px) {
+    width: 100vh;
+    height: 90vh;
   }
 }
 
 #circle2 {
   border-radius: 50%;
   position: absolute;
-  width: 398px;
-  height: 398px;
+  width: 55vh;
+  height: 51vh;
   right: -184px;
   top: -183px;
 
   background: #ff9c41;
+  @media (max-height: 730px) {
+    width: 70vh;
+    height: 54vh;
+  }
 }
 #circle3 {
   position: absolute;
-  width: 22em;
-  height: 13em;
-  right: -110px;
-  bottom: -50px;
+  width: 25vh;
+  height: 20vh;
+  right: 0px;
+  bottom: 0px;
   border-top-left-radius: 100%;
   background: #141927;
-  .login {
-    border-bottom-style: solid;
-    border-bottom-color: #ff9c41;
-    border-bottom-width: 5px;
-    line-height: 6px;
-    position: absolute;
-    right: 40%;
-    bottom: 30%;
-    color: white;
-    font-size: x-large;
-  }
+}
+
+.login {
+  border-bottom-style: solid;
+  border-bottom-color: #ff9c41;
+  border-bottom-width: 5px;
+  line-height: 6px;
+  color: #141927;
 }
 
 #text-create {
   position: absolute;
-  width: 208px;
+  width: 35vh;
   height: 126px;
-  left: 36px;
-  top: 50px;
+  left: 4vh;
+  top: 5vh;
   z-index: 100;
   font-weight: 500;
-  font-size: 46px;
+  font-size: 5vh;
   line-height: 63px;
 }
 
@@ -61,12 +64,16 @@
 }
 .content {
   position: relative;
-  top: 40%;
+  top: 35%;
   width: 100%;
+  @media (max-height: 730px) {
+    top: 33%;
+  }
 }
 
 .bg-color {
   --background: #e1e1e1;
+  display: relative;
 }
 .register {
   border-bottom-style: solid;

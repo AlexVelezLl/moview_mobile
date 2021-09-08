@@ -8,11 +8,12 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-row class="ion-justify-content-center" *ngIf="loading; else content">
-    <ion-spinner name="crescent" color="primary"></ion-spinner>
-  </ion-row>
-  <ng-template #content>
+  <div *ngIf="loading">
+    <app-eskeleton-profile></app-eskeleton-profile>
+  </div>
+  <div>
     <ion-row
+      *ngIf="!loading"
       class="ion-justify-content-center ion-margin-top ion-align-items-end"
     >
       <ion-col size="6">
@@ -38,8 +39,12 @@
         </div>
       </ion-col>
     </ion-row>
-    <div *ngIf="isProfileRoute">
+    <div *ngIf="loading">
+      <app-eskeleton-watchlist></app-eskeleton-watchlist>
+    </div>
+    <div *ngIf="isProfileRoute && !loading">
       <h2 class="ion-margin-start bold">Contenido por ver</h2>
+
       <div class="movie-container">
         <div class="movies">
           <div
@@ -62,7 +67,12 @@
         </div>
       </div>
     </div>
-    <div>
+    <div *ngIf="loading">
+      <h2 class="ion-margin-start bold">Últimas reseñas</h2>
+      <app-eskeleton-review></app-eskeleton-review>
+      <app-eskeleton-review></app-eskeleton-review>
+    </div>
+    <div *ngIf="!loading">
       <h2 class="ion-margin-start bold">Últimas reseñas</h2>
       <app-empty-list
         *ngIf="!reviews.length"
@@ -73,5 +83,5 @@
         [review]="rev"
       ></app-card-review>
     </div>
-  </ng-template>
+  </div>
 </ion-content>

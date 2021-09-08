@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { SystemService } from 'src/app/services/system/system.service';
 
@@ -11,14 +12,17 @@ import { SystemService } from 'src/app/services/system/system.service';
 })
 export class RegistroPage implements OnInit {
   private _registerForm: FormGroup;
+  public devHeight = this.platform.height();
   constructor(
     private alertService: AlertService,
     private sistema: SystemService,
-    private router: Router
+    private router: Router,
+    private platform: Platform
   ) {}
 
   ngOnInit() {
     this.initForm();
+    console.log(this.devHeight);
   }
 
   initForm() {
@@ -57,12 +61,13 @@ export class RegistroPage implements OnInit {
       //this.router.navigateByUrl('/tabs', { replaceUrl: true });
     } catch (error) {
       console.log(error);
-
+      this.alertService.dismissLoading();
       await this.alertService.presentToast('Error al crear usuario');
+      return;
     }
-    this.alertService.dismissLoading();
     this.alertService.presentToast('Usuario creado con éxito');
     this.router.navigateByUrl('tabs/movie', { replaceUrl: true });
+    this.alertService.dismissLoading();
   }
 
   public get registerForm() {
