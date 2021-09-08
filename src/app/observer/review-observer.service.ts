@@ -6,7 +6,7 @@ import { Review } from '../models/interfaces.model';
   providedIn: 'root',
 })
 export class ReviewObserverService {
-  private reviewSubject = new Subject<any>();
+  private reviewSubject = new Subject<Review>();
   constructor() {}
 
   publish(review: Review) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Category, Movie } from 'src/app/models/interfaces.model';
+import { ReviewObserverService } from 'src/app/observer/review-observer.service';
 import { WatchlistObserverService } from 'src/app/observer/watchlist-observer.service';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { MovieService } from 'src/app/services/movie/movie.service';
@@ -18,12 +19,13 @@ export class MoviesPage implements OnInit {
   selectedCategoryId = -1;
   private movies: Movie[];
   private removeFromWatchlistSubscription: Subscription;
-
+  private reviewSubscription: Subscription;
   constructor(
     private movieService: MovieService,
     private categoryService: CategoryService,
     private watchlistService: WatchlistService,
-    private watchlistObserver: WatchlistObserverService
+    private watchlistObserver: WatchlistObserverService,
+    private reviewObserver: ReviewObserverService
   ) {}
 
   async ngOnInit() {
@@ -37,6 +39,15 @@ export class MoviesPage implements OnInit {
             movie.isInWatchlist = false;
           }
         });
+      });
+    this.reviewSubscription = this.reviewObserver
+      .getObservable()
+      .subscribe((review) => {
+        const movie = this.movies.find((m) => m.id == review.id_movie);
+        movie.avg_score =
+          (movie.avg_score * movie.rating_numbers + review.score) /
+          (movie.rating_numbers + 1);
+        movie.rating_numbers++;
       });
   }
 
@@ -84,5 +95,6 @@ export class MoviesPage implements OnInit {
 
   ngOnDestroy() {
     this.removeFromWatchlistSubscription?.unsubscribe();
+    this.reviewSubscription?.unsubscribe();
   }
 }

@@ -12,6 +12,7 @@ export interface Movie {
   platforms: Array<{ logo: string; link: string }>;
   categories: Array<any>;
   isInWatchlist?: boolean;
+  rating_numbers?: number;
 }
 
 export interface Review {
